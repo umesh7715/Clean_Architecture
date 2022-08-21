@@ -2,9 +2,11 @@ package com.andromesh.cleanarch.presentation.coin_list
 
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.andromesh.cleanarch.common.Resource
 import com.andromesh.cleanarch.domain.use_cases.get_coins.GetCoinUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
@@ -35,9 +37,7 @@ class CoinListViewModel @Inject constructor(
                     )
                 }
             }
-
-
-        }
+        }.launchIn(viewModelScope)
     }
 
 }

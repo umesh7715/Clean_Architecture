@@ -3,11 +3,12 @@ package com.andromesh.cleanarch.presentation.coin_details
 import androidx.compose.runtime.*
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.andromesh.cleanarch.common.Constant
 import com.andromesh.cleanarch.common.Resource
-import com.andromesh.cleanarch.domain.use_cases.get_coins.GetCoinDetailUseCase
-import com.andromesh.cleanarch.domain.use_cases.get_coins.GetCoinUseCase
+import com.andromesh.cleanarch.domain.use_cases.get_coin.GetCoinDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
@@ -41,9 +42,7 @@ class CoinDetailViewModel @Inject constructor(
                     )
                 }
             }
-
-
-        }
+        }.launchIn(viewModelScope)
     }
 
 }

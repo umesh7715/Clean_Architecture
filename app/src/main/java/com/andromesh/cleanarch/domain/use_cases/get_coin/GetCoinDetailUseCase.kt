@@ -1,4 +1,4 @@
-package com.andromesh.cleanarch.domain.use_cases.get_coins
+package com.andromesh.cleanarch.domain.use_cases.get_coin
 
 import com.andromesh.cleanarch.common.Resource
 import com.andromesh.cleanarch.data.remote.dto.toCoinDetail
@@ -15,14 +15,14 @@ class GetCoinDetailUseCase @Inject constructor(
 ) {
     operator fun invoke(coinId: String): Flow<Resource<CoinDetail>> = flow {
 
-        emit(Resource.Loading())
+        emit(Resource.Loading<CoinDetail>())
         try {
             val coinDetail = repository.getCoinById(coinId).toCoinDetail()
-            emit(Resource.Success(coinDetail))
+            emit(Resource.Success<CoinDetail>(coinDetail))
         } catch (e: HttpException) {
-            emit(Resource.Error(e.localizedMessage ?: "Something went wrong"))
+            emit(Resource.Error<CoinDetail>(e.localizedMessage ?: "Something went wrong"))
         } catch (e: IOException) {
-            emit(Resource.Error("Couldn't reach servers. Please check you internet connection"))
+            emit(Resource.Error<CoinDetail>("Couldn't reach servers. Please check you internet connection"))
         }
     }
 }
