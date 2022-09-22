@@ -17,8 +17,9 @@ android {
         applicationId "com.andromesh.cleanarch"
         minSdk 21
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        versionCode gitVersion.version
+        versionName gitVersionName
+        buildConfigField 'String', 'REVISION', "\"$gitVersionName\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
