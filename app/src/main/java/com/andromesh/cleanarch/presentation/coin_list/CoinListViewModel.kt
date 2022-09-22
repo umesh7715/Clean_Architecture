@@ -1,8 +1,10 @@
 package com.andromesh.cleanarch.presentation.coin_list
 
+import android.util.Log
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.andromesh.cleanarch.BuildConfig
 import com.andromesh.cleanarch.common.Resource
 import com.andromesh.cleanarch.domain.use_cases.get_coins.GetCoinUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,6 +22,9 @@ class CoinListViewModel @Inject constructor(
 
     init {
         getCoin()
+        Log.e("TAg", "Build config version id ${BuildConfig.VERSION_CODE}")
+        Log.e("TAg", "Build config version name ${BuildConfig.VERSION_NAME}")
+
     }
 
     private fun getCoin() {
