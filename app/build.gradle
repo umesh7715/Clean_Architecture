@@ -13,8 +13,6 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 def VERSION_NUMBER = 1
 def VERSION_NAME = "1.0"
 
-
-
 android {
     compileSdk 32
 
