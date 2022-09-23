@@ -10,11 +10,6 @@ def keystorePropertiesFile = rootProject.file("keystore.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
-def KEY_PASSWORD = keystoreProperties['keyPassword']
-def STORE_FILE = keystoreProperties['storeFile']
-def STORE_PASSWORD = keystoreProperties['storePassword']
-
-
 def VERSION_NUMBER = 1
 def VERSION_NAME = "1.0"
 
@@ -38,9 +33,9 @@ android {
     signingConfigs {
         release {
             keyAlias keystoreProperties['keyAlias']
-            keyPassword KEY_PASSWORD
-            storeFile file(STORE_FILE)
-            storePassword STORE_PASSWORD
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
         }
     }
 
